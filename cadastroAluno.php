@@ -66,7 +66,7 @@
           </div>
             <div class="form-group my-2">
               <label for="cpf">CPF</label>
-            <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF" name="cpf"required>
+            <input type="text" class="form-control" id="cpf" placeholder="Digite seu CPF" name="cpf" maxlength="14" oninput="mascaraCPF(this)"required>
           </div>
             <div class="form-group my-2">
               <label for="email">E-mail</label>
@@ -88,4 +88,25 @@
 
           </form>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script></body></html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+function mascaraCPF(cpf) {
+    let valor = cpf.value;
+
+    // Remove tudo que não é dígito
+    valor = valor.replace(/\D/g, '');
+
+    // Coloca o ponto entre os primeiros blocos de 3 dígitos
+    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+
+    // Coloca o segundo ponto
+    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+
+    // Coloca o hífen antes dos últimos 2 dígitos
+    valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+    cpf.value = valor;
+}
+</script>
+</body>
+</html>

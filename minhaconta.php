@@ -5,7 +5,7 @@ require 'conexao.php'; // Incluindo o arquivo de conexão
 $email = $_SESSION['login'];
 
 try {
-    $sql = "SELECT cpf FROM aluno WHERE email = :email";
+    $sql = "SELECT cpf, nome FROM aluno WHERE email = :email";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
@@ -77,6 +77,7 @@ try {
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="minhaconta.php">Minha Conta</a></li>
             <li><a class="dropdown-item" href="cadastro.php">Minhas Inscrições</a></li>
+            <li><a class="dropdown-item" href="loja.php">Loja</a></li>
           </ul>
         </div>
         <a class="btn btn-primary" type="submit" style="background-color: #FFB6C1; border: none; width: 5em;" href="logout.php">Sair</a>
@@ -88,7 +89,7 @@ try {
   <div class="container-custom">
     <div class="row">
       <div class="col-md-6 info-container" style="margin: 4em 2em 0em;">
-        <h4>Nome do usuário</h4>
+        <h4> <?php echo htmlspecialchars($result['nome']); ?></h4>
         <p><strong>CPF:</strong>  <?php echo htmlspecialchars($result['cpf']); ?></p>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($email); ?></p>
         <hr>

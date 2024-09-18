@@ -74,6 +74,7 @@ $email = $_SESSION['login'];
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="minhaconta.php">Minha Conta</a></li>
             <li><a class="dropdown-item" href="cadastro.php">Minhas Inscrições</a></li>
+            <li><a class="dropdown-item" href="loja.php">Loja</a></li>
           </ul>
         </div>
         <a class="btn btn-primary" type="submit" style="background-color: #FFB6C1; border: none; width: 5em;" href="logout.php">Sair</a>
